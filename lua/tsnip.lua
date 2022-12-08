@@ -24,7 +24,7 @@ function M.input(label)
       },
     },
     win_options = {
-      winhighlight = "Normal:Normal",
+      winhighlight = "Normal:Normal,FloatBorder:Normal",
     },
   }, {
     on_change = function(value)

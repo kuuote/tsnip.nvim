@@ -1,0 +1,10 @@
+#!/bin/bash -u
+
+git clean -ffdx
+git log --oneline | grep -- '--merge--' | awk '{print $1}' | xargs git reset --hard
+git remote add up https://github.com/yuki-yano/tsnip.nvim
+git fetch --all --prune
+git rebase up/main
+git merge origin/insert_paste
+git merge origin/nui-border-color
+

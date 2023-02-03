@@ -52,6 +52,7 @@ const nuiInputLabel = (snippet: Snippet) =>
 // Note: (@kuuote): this function must be call without `await`
 //                because adjust control flow to nui.nvim
 const prompt = async (denops: Denops, label: string) => {
+  await new Promise((r) => setTimeout(r, 50));
   await autocmd.group(denops, "tsnip-internal", (helper) => {
     helper.define(
       "CmdlineChanged",

@@ -1,0 +1,10 @@
+#!/bin/bash -eu
+
+git remote add up https://github.com/yuki-yano/tsnip.nvim ||:
+git fetch --all --prune
+git reset up/main
+git add commit
+git add merge
+git commit -m hoge
+git stash -a
+git stash clear

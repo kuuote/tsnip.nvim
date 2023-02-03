@@ -1,0 +1,24 @@
+#!/bin/bash -u
+
+if realpath $0 | grep -v '\.git' > /dev/null; then
+  echo not git
+  git=$(dirname $0)/.git/
+  cp $0 ${git}/merge
+  exec ${git}/merge
+fi
+
+rebase_merge() {
+  git switch $1 || exit 1
+  git rebase up/main || exit 1
+  git switch main
+  git merge $1 || exit 1
+}
+
+(
+  rebase_merge insert_paste
+  rebase_merge nui-border-color
+  rebase_merge input_delay
+)
+git stash -a
+git stash clear
+git switch main
